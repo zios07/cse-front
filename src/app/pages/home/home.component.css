@@ -1,0 +1,29 @@
+.home-slider-img{
+    max-width: 100%;
+    height: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.home-searcher{
+   
+   
+}
+.home-searcher form{
+    background: lightgrey;
+    opacity: 0.8;
+    margin:auto;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.home-who-we-are-and-what-offer{
+    padding-top: 2.5rem;
+    margin:auto;
+}
+.selection-properties-list li{
+    list-style: none;
+}
+.ampointer:hover{
+    cursor:pointer;
+}
