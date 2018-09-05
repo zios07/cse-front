@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './pages/partials/header/header.component';
 import { FooterComponent } from './pages/partials/footer/footer.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { UsersComponent } from './pages/admin/users/users.component';
+import { routes } from './app.routes';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,10 +17,14 @@ import { FooterComponent } from './pages/partials/footer/footer.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent,
+    UsersComponent
   ],
-  imports: [
-    BrowserModule
+  imports: [  
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

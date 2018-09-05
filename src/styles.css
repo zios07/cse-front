@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+html.noscroll {
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.label-inside-input {
+    margin-left: 10px;
+}
+
+.custom-control-label {
+    padding-left: 20px;
+}
