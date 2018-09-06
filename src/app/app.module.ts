@@ -10,6 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,9 +25,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [  
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

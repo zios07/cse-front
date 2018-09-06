@@ -8,22 +8,16 @@
     <label class="mr-sm-2" for="inlineFormCustomSelect">Property search</label>
     <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
       <option selected>Locations...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option *ngFor="let location of locations">{{location.name}}</option>
     </select>
     <!-- If special intern data type area is on or selected, enables area-->
     <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
       <option selected>Subarea...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option *ngFor="let subarea of subareas">{{subarea.label}}</option>
     </select>
     <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
       <option selected>Types...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option *ngFor="let type of types">{{type.label}}</option>
     </select>
 
     <!-- If special intern data type home_to_live is on, appears and enables number of bedrooms and number of bathrooms-->
