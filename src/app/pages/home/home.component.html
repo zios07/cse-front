@@ -6,52 +6,52 @@
 <div class="row home-searcher">
   <form class="form-inline">
     <label class="mr-sm-2" for="inlineFormCustomSelect">Property search</label>
-    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="location" [(ngModel)]="searchDto.location">
       <option selected>Locations...</option>
       <option *ngFor="let location of locations">{{location.name}}</option>
     </select>
     <!-- If special intern data type area is on or selected, enables area-->
-    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="subarea" [(ngModel)]="searchDto.subarea">
       <option selected>Subarea...</option>
       <option *ngFor="let subarea of subareas">{{subarea.label}}</option>
     </select>
-    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="type" [(ngModel)]="searchDto.type">
       <option selected>Types...</option>
       <option *ngFor="let type of types">{{type.label}}</option>
     </select>
 
     <!-- If special intern data type home_to_live is on, appears and enables number of bedrooms and number of bathrooms-->
     <div>
-      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="nbBedrooms" [(ngModel)]="searchDto.nbBedrooms">
         <option selected>Bedrooms...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </select>
-      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="nbBathrooms" [(ngModel)]="searchDto.nbBathrooms">
         <option selected>Bathrooms...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </select>
-      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-        <option selected>Budget...</option>
-        <option value="2">50.000 - 200.000 e</option>
-        <option value="3">200.000 - 300.000 e</option>
-        <option value="2">300.000 - 400.000 e</option>
-        <option value="3">400.000 - 500.000 e</option>
-        <option value="2">500.000 - 600.000 e</option>
-        <option value="3">600.000 - 700.000 e</option>
-        <option value="2">700.000 - 800.000 e</option>
-        <option value="3">800.000 - 1.000.000 e</option>
-        <option value="3">1.000.000 - 2.000.000 e</option>
-        <option value="3">2.000.000 - 5.000.000 e</option>
-        <option value="3">+ 5.000.000 e</option>
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="budget" [(ngModel)]="budget">
+        <option selected value="">Budget...</option>
+        <option value="50000-200000">50.000 - 200.000 e</option>
+        <option value="200000-300000">200.000 - 300.000 e</option>
+        <option value="300000-400000">300.000 - 400.000 e</option>
+        <option value="400000-500000">400.000 - 500.000 e</option>
+        <option value="500000-600000">500.000 - 600.000 e</option>
+        <option value="600000-700000">600.000 - 700.000 e</option>
+        <option value="700000-800000">700.000 - 800.000 e</option>
+        <option value="800000-1000000">800.000 - 1.000.000 e</option>
+        <option value="1000000-2000000">1.000.000 - 2.000.000 e</option>
+        <option value="2000000-5000000">2.000.000 - 5.000.000 e</option>
+        <option value="+5000000">+ 5.000.000 e</option>
       </select>
     </div>
 
-    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Ref">
-    <button type="submit" class="btn btn-secondary">Submit</button>
+    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ref" placeholder="Ref" [(ngModel)]="searchDto.ref">
+    <button type="button" class="btn btn-secondary" (click)="searchProperties()">Submit</button>
   </form>
 
 </div>

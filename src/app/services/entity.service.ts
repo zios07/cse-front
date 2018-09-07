@@ -32,8 +32,8 @@ export class EntityService {
     return this.http.delete(this.apiUrl + this.path + "/" + id);
   }
 
-  search(searchDto) {
-    return this.http.post(this.apiUrl + this.path, searchDto);
+  search(searchDto, page, size) {
+    return this.http.post(this.apiUrl + this.path + "?page=" + page + "&size=" + size , searchDto);
   }
 
   setPath(path: string) {

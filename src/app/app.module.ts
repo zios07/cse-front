@@ -11,7 +11,7 @@ import { UsersComponent } from './pages/admin/users/users.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
   ],
