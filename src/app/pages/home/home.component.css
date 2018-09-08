@@ -4,12 +4,27 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
-.home-searcher{
-   
-   
+
+.home-body-container {
+    margin: 50px 70px;
 }
+
+.home-body-card {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.home-card-title {
+    margin: 3% 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
 .home-searcher form{
-    background: lightgrey;
+    background: #f8f9fa !important;
     opacity: 0.8;
     margin:auto;
     padding-top: 2.5rem;
@@ -17,13 +32,12 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 .home-who-we-are-and-what-offer{
     padding-top: 2.5rem;
     margin:auto;
 }
+
 .selection-properties-list li{
     list-style: none;
-}
-.ampointer:hover{
-    cursor:pointer;
 }

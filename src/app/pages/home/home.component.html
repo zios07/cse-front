@@ -1,5 +1,5 @@
 <div class="row home-slider">
-  <div class="">
+  <div>
     <img src="../../../assets/imgs/slider01.PNG" class=" home-slider-img img-fluid" alt="">
   </div>
 </div>
@@ -51,13 +51,13 @@
     </div>
 
     <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="ref" placeholder="Ref" [(ngModel)]="searchDto.ref">
-    <button type="button" class="btn btn-secondary" (click)="searchProperties()">Submit</button>
+    <input type="button" class="btn btn-secondary home-search-btn" (click)="searchProperties()" value="Search">
   </form>
 
 </div>
 <div class="home-who-we-are-and-what-offer">
-  <article class="text-center">
-    <h3>Welcome to Costa del Sol international estates' site</h3>
+  <article class="home-card-title text-center">
+    <h3 class="home-card-title">Welcome to Costa del Sol international estates' site</h3>
     <h4>Properties in Marbella, Costa del Sol and Sotogrande</h4>
     <p>We are a group of people formed by urban and property lawyers and estates very experienced that has a very broad range
       of properties in Costa del Sol for investment or second home. We take care about about our product and only select
@@ -68,179 +68,192 @@
 
 </div>
 <!-- Go to one of four selected locations. Possibility to choose from backend the four selected locations-->
-<div class="location-properties text-center">
-  <!--click and go to Location properties page-->
-  <h3 class="ampointer">Location properties</h3>
-  <div class="row">
-    <!-- click and go to one -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <p class="card-text">Marbella</p>
+<div class="home-body-container">
+  <div class="location-properties home-body-card">
+    <!--click and go to Location properties page-->
+    <a routerLink="locations/all">
+      <h3 class="home-card-title text-center">Location properties</h3>
+    </a>
+    <div class="row">
+      <!-- click and go to one -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Marbella</p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- click and go to two -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <p class="card-text">Sabinillas</p>
+      <!-- click and go to two -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Sabinillas</p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- click and go to three -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <p class="card-text">Mijas</p>
+      <!-- click and go to three -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Mijas</p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- click and go to four -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <p class="card-text">Sotogrande</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- First four properties appear automatically are changing every hour or every day -->
-<div class="all-properties ">
-  <!--click and go to All properties page-->
-  <h3 class="text-center ampointer">All properties</h3>
-  <div class="row">
-    <!-- click and go to detail of this property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <div class="row">
-            <p class="card-text left">Villa in Mijas costa</p>
-            <p class="card-text right">1.100.000 euros</p>
+      <!-- click and go to four -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Sotogrande</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- click and go to detail of this property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
-    <!-- click and go to detail of this property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
-    <!-- click and go to detail of this property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
   </div>
-
-</div>
-<div class="new-developments text-center">
-  <!--click and go to New developments page-->
-  <h3 class="ampointer">New developments</h3>
-  <div class="row">
-    <!-- click and go to detail of this new development property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-          <div class="row">
-            <p class="card-text left">Villa in Mijas costa</p>
-            <p class="card-text right">1.100.000 euros</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- click and go to detail of this new development property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
-    <!-- click and go to detail of this new development  property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
-    <!-- click and go to detail of this new development property -->
-    <div class="col-md-3 col-sm-6 ampointer">
-      <div class="card">
-        <div class="card-block">
-          <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="selection-properties text-center">
-  <!--click and go to selection properties page-->
-  <h3 class="ampointer">Selection properties</h3>
-  <div class="row">
-      <!-- click and go to frontline beach properties -->
-      <div class="col-md-3 col-sm-6 ampointer">
-          <div class="card">
-              <div class="card-block">
-                <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-                <p class="card-text">Frontline beach</p>
-              </div>
+  <hr>
+  <!-- First four properties appear automatically are changing every hour or every day -->
+  <div class="all-properties  home-body-card">
+    <!--click and go to All properties page-->
+    <a routerLink="properties/all">
+      <h3 class="home-card-title text-center">All properties</h3>
+    </a>
+    <div class="row">
+      <!-- click and go to detail of this property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <div class="row">
+              <p class="card-text left">Villa in Mijas costa</p>
+              <p class="card-text right">1.100.000 euros</p>
             </div>
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+  <div class="new-developments  home-body-card">
+    <!--click and go to New developments page-->
+    <a routerLink="developments/new">
+      <h3 class="home-card-title">New developments</h3>
+    </a>
+    <div class="row">
+      <!-- click and go to detail of this new development property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <div class="row">
+              <p class="card-text left">Villa in Mijas costa</p>
+              <p class="card-text right">1.100.000 euros</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this new development property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this new development  property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+      <!-- click and go to detail of this new development property -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="selection-properties  home-body-card">
+    <!--click and go to selection properties page-->
+    <a routerLink="properties/selection">
+      <h3 class="home-card-title">Selection properties</h3>
+    </a>
+    <div class="row">
+      <!-- click and go to frontline beach properties -->
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Frontline beach</p>
+          </div>
+        </div>
       </div>
       <!-- click and go to frontline golf properties -->
-      <div class="col-md-3 col-sm-6 ampointer">
-          <div class="card">
-              <div class="card-block">
-                <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-                <p class="card-text">Frontline golf</p>
-              </div>
-            </div>
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Frontline golf</p>
+          </div>
+        </div>
       </div>
       <!-- click and go to luxury properties -->
-      <div class="col-md-3 col-sm-6 ampointer">
-          <div class="card">
-              <div class="card-block">
-                <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-                <p class="card-text">Luxury</p>
-              </div>
-            </div>
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Luxury</p>
+          </div>
+        </div>
       </div>
       <!-- click and go to special offers -->
-      <div class="col-md-3 col-sm-6 ampointer">
-          <div class="card">
-              <div class="card-block">
-                <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-                <p class="card-text">Special offers</p>
-              </div>
-            </div>
+      <div class="col-md-3 col-sm-6 ">
+        <div class="card">
+          <div class="card-block">
+            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
+            <p class="card-text">Special offers</p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
