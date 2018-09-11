@@ -1,0 +1,19 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~font-awesome/css/font-awesome.css';
+
+
+* {
+    font-family: 'Muli', Verdana, Geneva, sans-serif;
+    font-size: 15px;
+    color: #666666;
+}
+
+.card-title, .card-text {
+    text-align: center;
+}
+
+.price-text {
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+}

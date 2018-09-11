@@ -1,3 +1,22 @@
-<p>
-  all-properties works!
-</p>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let p of properties; let i = index">
+      <div class="col property-item">
+        <div class="card" style="width: 21rem;">
+          <a class="property-label-anchor" [routerLink]="['/properties/', p.id]">
+            <img src="../../../assets/imgs/frontline_golf.PNG" alt="property image" class="card-img-top">
+          </a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a class="property-label-anchor" [routerLink]="['/properties/', p.id]">{{p.title}}</a>
+            </h4>
+            <p class="card-text">{{p.description}}</p>
+            <p class="card-text price-text">{{p.price | currency:'USD':'symbol-narrow'}}</p>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="(i+1) % 3 === 0" class="w-100"></div>
+    </ng-container>
+  </div>
+</div>

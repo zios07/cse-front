@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule, NgbCarouselModule, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -19,6 +20,7 @@ import { DevelopmentDetailsComponent } from './pages/developments/development-de
 import { NewsComponent } from './pages/news/news.component';
 import { NewDevelopmentsComponent } from './pages/developments/new-developments/new-developments.component';
 import { SelectionPropertiesComponent } from './pages/properties/selection-properties/selection-properties.component';
+import { AllLocationsComponent } from './pages/locations/all-locations/all-locations.component';
 
 @NgModule({
   declarations: [
@@ -35,16 +37,20 @@ import { SelectionPropertiesComponent } from './pages/properties/selection-prope
     DevelopmentDetailsComponent,
     NewsComponent,
     NewDevelopmentsComponent,
-    SelectionPropertiesComponent
+    SelectionPropertiesComponent,
+    AllLocationsComponent
   ],
   imports: [  
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    NgbCarouselModule
   ],
   providers: [
+    NgbCarouselConfig
   ],
   bootstrap: [AppComponent]
 })

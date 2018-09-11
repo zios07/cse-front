@@ -1,0 +1,17 @@
+.properties-card-group {
+    margin-top: 2%;
+}
+
+.card:hover {
+    background-color: beige;
+}
+
+.property-item {
+    margin-top: 20px;
+}
+
+.property-label-anchor {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #f93;
+}
