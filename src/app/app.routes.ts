@@ -9,6 +9,7 @@ import { DevelopmentDetailsComponent } from "./pages/developments/development-de
 import { NewsComponent } from "./pages/news/news.component";
 import { NewDevelopmentsComponent } from "./pages/developments/new-developments/new-developments.component";
 import { SelectionPropertiesComponent } from "./pages/properties/selection-properties/selection-properties.component";
+import { AllLocationsComponent } from "./pages/locations/all-locations/all-locations.component";
 
 export const routes: Routes = [
     { path: "", component: HomeComponent},
@@ -19,5 +20,7 @@ export const routes: Routes = [
     { path: "developments/all", component: AllDevelopmentsComponent},
     { path: "developments/new", component: NewDevelopmentsComponent},
     { path: "developments/:id", component: DevelopmentDetailsComponent},
+    { path: "locations/all", component: AllLocationsComponent},
+    { path: "properties/location/:id", component: AllPropertiesComponent},
     { path: "news", component: NewsComponent}
 ]

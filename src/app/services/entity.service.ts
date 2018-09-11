@@ -16,8 +16,8 @@ export class EntityService {
     return this.http.get(this.apiUrl + this.path + "/" + id);
   }
 
-  getAll() {
-    return this.http.get(this.apiUrl + this.path);
+  getAll(page: number, size: number) {
+    return this.http.get(this.apiUrl + this.path + "?page=" + page + "&size=" + size);
   }
 
   create(entity) {

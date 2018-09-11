@@ -1,4 +1,4 @@
-.developments-card-group {
+.locations-card-group {
     margin-top: 2%;
 }
 
@@ -6,12 +6,11 @@
     background-color: beige;
 }
 
-.development-item {
+.location-item {
     margin-top: 20px;
 }
 
-.development-label-anchor {
+.location-label-anchor {
     font-size: 0.8em;
     text-decoration: none;
-    color: #f93;
 }

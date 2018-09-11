@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Property } from '../../../domain/property';
+import { EntityService } from '../../../services/entity.service';
 
 @Component({
   selector: 'cse-all-properties',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllPropertiesComponent implements OnInit {
 
-  constructor() { }
+  
+  private page: number = 0;
+  private size: number = 7;
+
+  properties: Property[] = [];
+
+  constructor(private entityService: EntityService) { }
 
   ngOnInit() {
+    this.loadProperties();
   }
 
+  loadProperties() {
+    this.entityService.setPath("properties");
+    this.entityService.getAll(this.page, this.size).subscribe((resp: any) => {
+      this.properties = resp.content;
+    }, error => {
+      console.log(error);
+    })
+  }
 }
