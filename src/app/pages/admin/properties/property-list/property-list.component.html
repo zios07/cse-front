@@ -1,3 +1,84 @@
-<p>
-  property-list works!
-</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Ref</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Creation Date</th>
+      <th scope="col">Update Date</th>
+      <th scope="col">Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let property of properties">
+      <td>{{property.id}}</td>
+      <td>{{property.ref}}</td>
+      <td>{{property.title}}</td>
+      <td>{{property.description}}</td>
+      <td>{{property.creationDate}}</td>
+      <td>{{property.updateDate}}</td>
+      <td>{{property.author.firstName}} {{property.author.lastName}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<data-table
+		[items] = "items"
+		[itemCount] = "itemsCount"
+		(reload) = "reloadItems($event)"
+        [substituteRows]="false"
+	>
+
+		<data-table-column
+			[property] = "'ref'"
+			[header] = "'Ref'"
+			[sortable] = "true"
+			[resizable] = "true"
+		>
+		</data-table-column>
+
+
+		<data-table-column
+			[property] = "'description'"
+			[header] = "'Description'"
+			[sortable] = "true"
+			[resizable] = "true"
+		>
+		</data-table-column>
+
+		<data-table-column
+			[property] = "'creationDate'"
+			[header] = "'Creation Date'"
+			[sortable] = "true"
+			[resizable] = "true"
+		>
+			<ng-template #dataTableCell let-item="item">
+				{{ item.creationDate | date: 'dd-MM-yyyy'}}
+			</ng-template>
+		</data-table-column>
+
+		<data-table-column
+			[property] = "'author'"
+			[header] = "'Author'"
+			[sortable] = "true"
+			[resizable] = "true"
+		>
+			<ng-template #dataTableCell let-item="item">
+				{{ item.author?.firstName}} {{ item.author?.lastName}}
+			</ng-template>
+		</data-table-column>
+
+		<data-table-column>
+			<ng-template #dataTableCell let-item="item">
+				<a [routerLink]="['/admin/properties/', item.id]">
+					<i class="fa fa-edit"></i>
+				</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a style="color:red" (click)="deleteProperty(item.id)">
+					<i class="fa fa-remove"></i>
+				</a>
+			</ng-template>
+		</data-table-column>
+
+	</data-table>

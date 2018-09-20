@@ -28,6 +28,8 @@ import { TypeFormComponent } from './pages/admin/types/type-form/type-form.compo
 import { TypeListComponent } from './pages/admin/types/type-list/type-list.component';
 import { UserListComponent } from './pages/admin/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/admin/users/user-form/user-form.component';
+import { DataTableModule } from 'angular5-data-table';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -58,8 +60,9 @@ import { UserFormComponent } from './pages/admin/users/user-form/user-form.compo
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    HttpClientModule,
+    HttpModule,
     FormsModule,
+    DataTableModule,
     NgbModule,
     NgbCarouselModule
   ],

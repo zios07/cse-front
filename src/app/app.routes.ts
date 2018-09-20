@@ -41,5 +41,6 @@ export const routes: Routes = [
     { path: "admin/types/new", component: TypeFormComponent},
     { path: "admin/users", component: UserListComponent},
     { path: "admin/users/:id", component: UserFormComponent},
-    { path: "admin/users/new", component: UserFormComponent}
+    { path: "admin/users/new", component: UserFormComponent},
+    { path: "**", component: HomeComponent}
 ]

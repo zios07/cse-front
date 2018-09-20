@@ -17,3 +17,11 @@
     font-size: 18px;
     font-weight: 600;
 }
+
+table {
+    background-color: #f8f9fa !important;
+}
+
+td, th {
+    text-align: center;
+}
