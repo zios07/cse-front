@@ -8,7 +8,6 @@ import { HeaderComponent } from './pages/partials/header/header.component';
 import { FooterComponent } from './pages/partials/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { UsersComponent } from './pages/admin/users/users.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
@@ -21,6 +20,14 @@ import { NewsComponent } from './pages/news/news.component';
 import { NewDevelopmentsComponent } from './pages/developments/new-developments/new-developments.component';
 import { SelectionPropertiesComponent } from './pages/properties/selection-properties/selection-properties.component';
 import { AllLocationsComponent } from './pages/locations/all-locations/all-locations.component';
+import { PropertyListComponent } from './pages/admin/properties/property-list/property-list.component';
+import { PropertyFormComponent } from './pages/admin/properties/property-form/property-form.component';
+import { LocationFormComponent } from './pages/admin/locations/location-form/location-form.component';
+import { LocationListComponent } from './pages/admin/locations/location-list/location-list.component';
+import { TypeFormComponent } from './pages/admin/types/type-form/type-form.component';
+import { TypeListComponent } from './pages/admin/types/type-list/type-list.component';
+import { UserListComponent } from './pages/admin/users/user-list/user-list.component';
+import { UserFormComponent } from './pages/admin/users/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,6 @@ import { AllLocationsComponent } from './pages/locations/all-locations/all-locat
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    UsersComponent,
     AllPropertiesComponent,
     PropertyDetailsComponent,
     AllDevelopmentsComponent,
@@ -38,7 +44,15 @@ import { AllLocationsComponent } from './pages/locations/all-locations/all-locat
     NewsComponent,
     NewDevelopmentsComponent,
     SelectionPropertiesComponent,
-    AllLocationsComponent
+    AllLocationsComponent,
+    PropertyListComponent,
+    PropertyFormComponent,
+    LocationFormComponent,
+    LocationListComponent,
+    TypeFormComponent,
+    TypeListComponent,
+    UserListComponent,
+    UserFormComponent
   ],
   imports: [  
     BrowserModule,
