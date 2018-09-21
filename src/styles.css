@@ -18,10 +18,15 @@
     font-weight: 600;
 }
 
-table {
-    background-color: #f8f9fa !important;
+th {
+    color: white;
 }
 
 td, th {
     text-align: center;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: white !important;
 }

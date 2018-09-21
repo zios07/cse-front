@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../../../domain/property';
 import { EntityService } from '../../../../services/entity.service';
+import { Subject } from 'rxjs';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'cse-property-list',
