@@ -44,5 +44,6 @@ a {
     list-style: none;
 }
 
-
-
+.carousel-control-next:hover {
+    cursor: pointer;
+}

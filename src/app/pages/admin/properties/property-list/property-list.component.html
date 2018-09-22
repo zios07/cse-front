@@ -25,7 +25,7 @@
       <td>{{property.description}}</td>
       <td>{{property.creationDate}}</td>
       <td>{{property.updateDate}}</td>
-      <td>{{property.author.firstName}} {{property.author.lastName}}</td>
+      <td>{{property.author?.firstName}} {{property.author?.lastName}}</td>
       <td>
         <span class="link" routerLink="{{property.id}}">
           <i class="fa fa-edit"></i>

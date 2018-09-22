@@ -12,7 +12,7 @@ export class LocationListComponent implements OnInit {
 
   locations: Location[] = [];
   page = 0;
-  size = 10;
+  size = 12;
 
   constructor(private entityService: EntityService,
               private toastr: ToastrService) {

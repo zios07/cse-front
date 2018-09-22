@@ -21,6 +21,7 @@ import { UserFormComponent } from "./pages/admin/users/user-form/user-form.compo
 
 export const routes: Routes = [
     { path: "", component: HomeComponent},
+    { path: "news", component: NewsComponent},
     { path: "login", component: LoginComponent},
     { path: "properties/all", component: AllPropertiesComponent},
     { path: "properties/selection", component: SelectionPropertiesComponent},
