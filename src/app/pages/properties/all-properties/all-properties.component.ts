@@ -11,7 +11,7 @@ export class AllPropertiesComponent implements OnInit {
 
   
   private page: number = 0;
-  private size: number = 7;
+  private size: number = 19;
 
   properties: Property[] = [];
 

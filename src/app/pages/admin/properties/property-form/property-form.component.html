@@ -1,3 +1,33 @@
-<p>
-  property-form works!
-</p>
+<form class="needs-validation" (ngSubmit)="onSubmit(propertyFrm)" #propertyFrm="ngForm">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Property ref</label>
+      <i class="required-sign" *ngIf="!property.ref">*</i>
+      <input type="text" class="form-control" [(ngModel)]="property.ref" name="ref" id="validationCustom01" placeholder="Property ref"
+        required>
+      <div class="invalid-feedback">
+        Code is required 
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Property title</label>
+      <i class="required-sign" *ngIf="!property.title">*</i>
+      <input type="text" class="form-control" [(ngModel)]="property.title" name="title"  id="validationCustom02" placeholder="Property title"
+        required>
+      <div class="invalid-feedback">
+        Title is required 
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Property description</label>
+      <i class="required-sign" *ngIf="!property.description">*</i>
+      <textarea type="text" class="form-control" [(ngModel)]="property.description" name="description"  id="validationCustom02" placeholder="Property description"
+        required></textarea>
+      <div class="invalid-feedback">
+        Description is required 
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="propertyFrm.invalid" class="btn btn-outline-success">Save</button>
+  <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/properties">Cancel</button>
+</form>

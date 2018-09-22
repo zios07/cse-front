@@ -30,6 +30,9 @@ import { UserListComponent } from './pages/admin/users/user-list/user-list.compo
 import { UserFormComponent } from './pages/admin/users/user-form/user-form.component';
 import { HttpModule } from '@angular/http';
 import { DataTablesModule } from 'angular-datatables';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,9 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     NgbModule,
     NgbCarouselModule,
-    DataTablesModule
+    DataTablesModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [
     NgbCarouselConfig

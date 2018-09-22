@@ -2,8 +2,8 @@
 @import '~font-awesome/css/font-awesome.css';
 
 
-* {
-    font-family: 'Muli', Verdana, Geneva, sans-serif;
+body {
+    font-family: ubuntu, Verdana, Geneva, sans-serif;
     font-size: 15px;
     color: #666666;
 }
@@ -29,4 +29,16 @@ td, th {
 .link:hover {
     cursor: pointer;
     color: white !important;
+}
+
+.add-link {
+    margin: 30px 0;
+}
+
+.btn-cancel {
+    margin: 20px;
+}
+
+.required-sign {
+    color: red;
 }

@@ -1,5 +1,9 @@
 <!-- <table class="table table-striped table-bordered table-sm row-border hover display" datatable [dtOptions]="dtOptions"
   [dtTrigger]="dtTrigger"> -->
+<a routerLink="new" class="add-link">
+  <i class="fa fa-plus"></i>
+  Add new property
+</a>
 <table class="table table-dark">
   <thead>
     <tr>
@@ -23,16 +27,15 @@
       <td>{{property.updateDate}}</td>
       <td>{{property.author.firstName}} {{property.author.lastName}}</td>
       <td>
-        <span class="link">
+        <span class="link" routerLink="{{property.id}}">
           <i class="fa fa-edit"></i>
         </span>
       </td>
       <td>
-        <span class="link">
+        <span class="link" (click)="delete(property.id)">
           <i class="fa fa-close"></i>
         </span>
       </td>
     </tr>
   </tbody>
 </table>
-

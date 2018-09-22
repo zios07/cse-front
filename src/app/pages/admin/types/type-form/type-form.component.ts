@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Type } from '../../../../domain/type';
+import { EntityService } from '../../../../services/entity.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cse-type-form',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeFormComponent implements OnInit {
 
-  constructor() { }
+  type: Type = new Type();
 
-  ngOnInit() {
+  constructor(private entityService: EntityService,
+              private router: Router,
+              private route: ActivatedRoute) {
+      this.entityService.setPath("types");
   }
 
+  ngOnInit() {
+    // If we are editing a type, we load it via this function
+    this.loadTypeForEdit();
+  }
+
+  onSubmit(form) {
+    this.addType(form);
+  }
+
+  addType(form) {
+    this.entityService.create(this.type).subscribe(resp => {
+      this.router.navigate(['/admin/types']);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  loadTypeForEdit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.entityService.getOne(id).subscribe((resp: any) => {
+        this.type = resp;
+        console.log(resp);
+      }, error => {
+        console.log(error);
+      })
+    }
+  }
 }
