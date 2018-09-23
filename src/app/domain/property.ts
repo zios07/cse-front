@@ -5,6 +5,7 @@ export class Property {
     
     id: number;
     ref: string;
+    uuid: string;
     title: string;
     description: string;
     type: Type;

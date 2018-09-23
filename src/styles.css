@@ -42,3 +42,7 @@ td, th {
 .required-sign {
     color: red;
 }
+
+.form-container {
+    margin: 50px;
+}

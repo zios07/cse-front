@@ -31,7 +31,7 @@ import { UserFormComponent } from './pages/admin/users/user-form/user-form.compo
 import { HttpModule } from '@angular/http';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { FileUploadModule } from 'primeng/fileupload';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -70,6 +70,7 @@ import { ToastrModule } from 'ngx-toastr';
     DataTablesModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
+    FileUploadModule
   ],
   providers: [
     NgbCarouselConfig
