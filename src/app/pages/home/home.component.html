@@ -68,9 +68,12 @@
   <article class="home-card-title text-center">
     <h3 class="home-card-title">Welcome to Costa del Sol international estates' site</h3>
     <h4>Properties in Marbella, Costa del Sol and Sotogrande</h4>
-    <p>We are a group of people formed by urban and property lawyers and estates very experienced that has a very broad range
-      of properties in Costa del Sol for investment or second home. We take care about about our product and only select
-      the best ones with very competitive prices nd quality. Also we help about buying process and visits, checking contracts,
+    <p>We are a group of people formed by urban and property lawyers and estates very experienced that has a very broad
+      range
+      of properties in Costa del Sol for investment or second home. We take care about about our product and only
+      select
+      the best ones with very competitive prices nd quality. Also we help about buying process and visits, checking
+      contracts,
       after sales and everything involved in the process.
     </p>
   </article>
@@ -129,47 +132,28 @@
     <a routerLink="properties/all">
       <h3 class="home-card-title text-center">All properties</h3>
     </a>
-    <div class="row">
-      <!-- click and go to detail of this property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <div class="row">
-              <p class="card-text left">Villa in Mijas costa</p>
-              <p class="card-text right">1.100.000 euros</p>
-            </div>
-          </div>
+    <div *ngIf="allProperties?.length != 0;else no_available_properties">
+      <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let property of allProperties">
+        <img *ngIf="property.gallery.images[0]" src="data:image/jpeg;base64,{{property.gallery.images[0].content}}" alt="Property image" class="card-img-top">
+        <img *ngIf="!property.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="Property image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{property.title}}</h5>
+          <p class="card-text">{{property.description}}</p>
         </div>
-      </div>
-      <!-- click and go to detail of this property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
-        </div>
-      </div>
-      <!-- click and go to detail of this property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
-        </div>
-      </div>
-      <!-- click and go to detail of this property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Bedrooms: </b>{{property.nbBedrooms}}</li>
+          <li class="list-group-item"><b>Bathrooms: </b>{{property.nbBathrooms}}</li>
+          <li class="list-group-item">${{property.price}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Details</a>
+          <a href="#" class="card-link">Similar properties</a>
         </div>
       </div>
     </div>
+    <ng-template #no_available_properties>
+      There is no available properties.
+    </ng-template>
 
   </div>
 

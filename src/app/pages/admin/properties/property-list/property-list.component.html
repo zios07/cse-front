@@ -18,7 +18,7 @@
       <th scope="col" colspan="2">action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="properties.length != 0">
     <tr *ngFor="let property of properties">
       <td>{{property.id}}</td>
       <td>{{property.ref}}</td>
@@ -38,6 +38,11 @@
           <i class="fa fa-close"></i>
         </span>
       </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="properties.length == 0">
+    <tr>
+      <td colspan="9">No properties available</td>
     </tr>
   </tbody>
 </table>

@@ -6,6 +6,7 @@ import { Subarea } from '../../domain/subarea';
 import { Property } from '../../domain/property';
 import { PropertySearchDto } from '../../domain/property-search-dto';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'cse-home',
@@ -20,17 +21,19 @@ export class HomeComponent implements OnInit {
   properties: Property[];
   budget: string;
   searchDto: PropertySearchDto;
-  
+  allProperties: Property[];
+
   page = 0;
   size = 10;
   images = [];
 
   constructor(private entityService: EntityService,
-              private carousselConfig: NgbCarouselConfig) {
+              private carousselConfig: NgbCarouselConfig,
+              private toastr: ToastrService) {
     this.searchDto = new PropertySearchDto();
-    carousselConfig.wrap=true;
-    carousselConfig.interval=5000;
-    carousselConfig.showNavigationIndicators=false;
+    carousselConfig.wrap = true;
+    carousselConfig.interval = 5000;
+    carousselConfig.showNavigationIndicators = false;
   }
 
   ngOnInit() {
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.loadTypes();
     this.loadLocations();
     this.loadSubareas();
+    this.loadMainProperties();
   }
 
   loadTypes() {
@@ -45,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.entityService.getAll(this.page, this.size).subscribe((resp: Type[]) => {
       this.types = resp;
     }, error => {
-      console.log(error);
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
@@ -54,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.entityService.getAll(this.page, this.size).subscribe((resp: any) => {
       this.locations = resp.content;
     }, error => {
-      console.log(error);
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
@@ -63,7 +67,7 @@ export class HomeComponent implements OnInit {
     this.entityService.getAll(this.page, this.size).subscribe((resp: Subarea[]) => {
       this.subareas = resp;
     }, error => {
-      console.log(error);
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
@@ -85,20 +89,30 @@ export class HomeComponent implements OnInit {
     this.entityService.search(this.searchDto, this.page, this.size).subscribe((resp: any) => {
       this.properties = resp.content;
     }, error => {
-      console.log(error);
+      this.toastr.error(JSON.stringify(error));
+    })
+  }
+
+  loadMainProperties() {
+    this.entityService.setPath("properties/main");
+    this.entityService.getAll().subscribe((resp: any) => {
+      console.log(resp);
+      this.allProperties = resp;
+    }, error => {
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
   loadSliders() {
     this.images = [
       '../../assets/imgs/sliders/slider04.jpg',
-      '../../assets/imgs/sliders/slider02.jpg', 
-      '../../assets/imgs/sliders/slider03.png', 
-      '../../assets/imgs/sliders/slider05.jpg', 
-      '../../assets/imgs/sliders/slider06.jpg', 
+      '../../assets/imgs/sliders/slider02.jpg',
+      '../../assets/imgs/sliders/slider03.png',
+      '../../assets/imgs/sliders/slider05.jpg',
+      '../../assets/imgs/sliders/slider06.jpg',
       '../../assets/imgs/sliders/slider07.jpg'
     ];
-    
+
   }
 
 }

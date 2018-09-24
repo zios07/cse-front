@@ -1,5 +1,6 @@
 import { Type } from "./type";
 import { Subarea } from "./subarea";
+import { Gallery } from "./gallery";
 
 export class Property {
     
@@ -13,5 +14,6 @@ export class Property {
     nbBedrooms: number;
     nbBathrooms: number;
     price: number;
+    gallery: Gallery;
 
 }
