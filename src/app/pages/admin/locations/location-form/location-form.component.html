@@ -20,7 +20,10 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationCustomUsername">Preview picture</label>
-      <input type="file" class="form-control-file" id="validationCustomFile">
+      <div>
+        <p-fileUpload name="photos[]" accept="image/*" mode="basic" customUpload="false"
+        (onSelect)="uploadPhoto($event)" showCancelButton="true"></p-fileUpload>
+      </div>
     </div>
   </div>
   <button type="submit" [disabled]="locationFrm.invalid" class="btn btn-outline-success">Save</button>

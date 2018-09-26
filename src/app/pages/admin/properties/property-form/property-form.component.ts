@@ -9,6 +9,7 @@ import { UUID } from 'angular2-uuid';
 import { zip } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import {FileUpload} from 'primeng/primeng';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'cse-property-form',
@@ -28,6 +29,7 @@ export class PropertyFormComponent implements OnInit {
   subareas: Subarea[] = [];
 
   constructor(private entityService: EntityService,
+    private formatter: DatePipe,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute) {
@@ -52,10 +54,10 @@ export class PropertyFormComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.addProperty(form);
+    this.addProperty();
   }
 
-  addProperty(form) {
+  addProperty() {
     this.property.uuid = localStorage.getItem('uuid');
     this.entityService.setPath("properties");
     this.entityService.create(this.property).subscribe(resp => {
@@ -88,6 +90,7 @@ export class PropertyFormComponent implements OnInit {
       this.entityService.setPath("properties");
       this.entityService.getOne(id).subscribe((resp: any) => {
         this.property = resp;
+        this.property.activeDate = this.formatter.transform(this.property.activeDate, "yyyy-MM-dd");
         this.setSelectedType();
         this.setSelectedSubarea();
       }, error => {

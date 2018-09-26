@@ -81,49 +81,25 @@
 </div>
 <!-- Go to one of four selected locations. Possibility to choose from backend the four selected locations-->
 <div class="home-body-container">
-  <div class="location-properties home-body-card">
-    <!--click and go to Location properties page-->
+  
+  <div class="all-locations  home-body-card">
+    <!--click and go to All locations page-->
     <a routerLink="locations/all">
-      <h3 class="home-card-title text-center">Location properties</h3>
+      <h3 class="home-card-title text-center">All locations</h3>
     </a>
-    <div class="row">
-      <!-- click and go to one -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <p class="card-text">Marbella</p>
-          </div>
-        </div>
-      </div>
-      <!-- click and go to two -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <p class="card-text">Sabinillas</p>
-          </div>
-        </div>
-      </div>
-      <!-- click and go to three -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <p class="card-text">Mijas</p>
-          </div>
-        </div>
-      </div>
-      <!-- click and go to four -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <p class="card-text">Sotogrande</p>
-          </div>
+    <div *ngIf="allLocations?.length != 0;else no_available_locations">
+      <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let location of allLocations">
+        <img *ngIf="location.gallery.images[0]" src="data:image/jpeg;base64,{{location.gallery.images[0].content}}" alt="location image" class="card-img-top">
+        <img *ngIf="!location.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="location image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{location.name}}</h5>
         </div>
       </div>
     </div>
+    <ng-template #no_available_locations>
+      There is no available locations.
+    </ng-template>
+
   </div>
 
   <!-- First four properties appear automatically are changing every hour or every day -->

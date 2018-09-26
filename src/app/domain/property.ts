@@ -15,5 +15,6 @@ export class Property {
     nbBathrooms: number;
     price: number;
     gallery: Gallery;
+    activeDate: string;
 
 }

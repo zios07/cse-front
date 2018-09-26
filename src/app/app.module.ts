@@ -33,6 +33,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ToastrModule } from 'ngx-toastr';
     FileUploadModule
   ],
   providers: [
-    NgbCarouselConfig
+    NgbCarouselConfig,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

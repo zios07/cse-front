@@ -4,6 +4,6 @@ export class Gallery {
 
     id: number;
     images: PropertyImage[];
-    propertyId: String;
+    entityId: String;
     
 }

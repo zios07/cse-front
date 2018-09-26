@@ -83,8 +83,13 @@
           This field is required
         </div>
       </div>
+      <div class="col-md-4 mb-3">
+        <label for="active-date-input">Date</label>
+        <input class="form-control" type="date" [(ngModel)]="property.activeDate" name="activeDate" id="active-date-input">
+      </div>
     </div>
     <div class="form-row">
+
       <div class="form-group">
         <label>Photos</label>
         <p-fileUpload name="photos[]" accept="image/*" mode="advanced" multiple="multiple" customUpload="false"
