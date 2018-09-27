@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule, NgbCarouselModule, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCarouselModule, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -32,6 +32,8 @@ import { HttpModule } from '@angular/http';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
+
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 
@@ -60,7 +62,7 @@ import { DatePipe } from '@angular/common';
     UserListComponent,
     UserFormComponent
   ],
-  imports: [  
+  imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
@@ -68,10 +70,10 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     NgbModule,
     NgbCarouselModule,
-    DataTablesModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
-    FileUploadModule
+    FileUploadModule,
+    TableModule
   ],
   providers: [
     NgbCarouselConfig,

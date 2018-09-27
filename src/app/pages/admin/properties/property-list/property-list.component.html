@@ -4,9 +4,11 @@
   <i class="fa fa-plus"></i>
   Add new property
 </a>
-<table class="table table-dark">
-  <thead>
+<p-table [value]="properties" dataKey="id" [loading]="loading"  [lazy]="true" (onLazyLoad)="loadPropertiesLazily($event)" [paginator]="true" 
+[rows]="size" [totalRecords]="totalRecords">
+  <ng-template pTemplate="header">
     <tr>
+      <th></th>
       <th scope="col">Id</th>
       <th scope="col">Ref</th>
       <th scope="col">Title</th>
@@ -16,11 +18,15 @@
       <th scope="col">Creation Date</th>
       <th scope="col">Update Date</th>
       <th scope="col">Author</th>
-      <th scope="col" colspan="2">action</th>
     </tr>
-  </thead>
-  <tbody *ngIf="properties.length != 0">
-    <tr *ngFor="let property of properties">
+  </ng-template>
+  <ng-template pTemplate="body" let-property let-expanded="expanded" >
+    <tr>
+      <td>
+        <a [pRowToggler]="property">
+          <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+        </a>
+      </td>
       <td>{{property.id}}</td>
       <td>{{property.ref}}</td>
       <td>{{property.title}}</td>
@@ -30,21 +36,33 @@
       <td>{{property.creationDate}}</td>
       <td>{{property.updateDate}}</td>
       <td>{{property.author?.firstName}} {{property.author?.lastName}}</td>
-      <td>
-        <span class="link" routerLink="{{property.id}}">
-          <i class="fa fa-edit"></i>
-        </span>
-      </td>
-      <td>
-        <span class="link" (click)="delete(property.id)">
-          <i class="fa fa-close"></i>
-        </span>
-      </td>
     </tr>
-  </tbody>
-  <tbody *ngIf="properties.length == 0">
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-property>
     <tr>
-      <td colspan="9">No properties available</td>
+      <td colspan="10">
+        <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+          <div class="ui-g-12 ui-md-3" style="text-align:center;">
+            <img [attr.alt]="property.brand" style="max-width: 300px; max-height: 300px" src="data:image/png;base64,{{property.gallery.images[0].content}}">
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Title:</b> {{property.title}}
+              </div>
+              <div class="ui-g-12">
+                <b>Description:</b> {{property.description}}
+              </div>
+              <div class="ui-g-12">
+                <b>Active date:</b> {{property.activeDate | date : 'dd/MM/yyyy'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
     </tr>
-  </tbody>
-</table>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    There are {{properties?.length}} proeprties
+  </ng-template>
+</p-table>

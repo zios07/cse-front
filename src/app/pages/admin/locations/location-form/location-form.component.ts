@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '../../../../domain/location';
 import { EntityService } from '../../../../services/entity.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UUID } from 'angular2-uuid';
+import { FileUpload } from 'primeng/primeng';
 
 @Component({
   selector: 'cse-location-form',
   templateUrl: './location-form.component.html',
   styleUrls: ['./location-form.component.css']
 })
+
 export class LocationFormComponent implements OnInit {
 
   location: Location = new Location();
@@ -41,8 +43,7 @@ export class LocationFormComponent implements OnInit {
   }
 
   uploadPhoto(event) {
-    let photos = event.files;
-    console.log(event.files);
+    let photos = event.files; 
     if(photos && photos.length > 0 ) {
       let fd = new FormData();
       fd.append("uuid", localStorage.getItem("uuid-location"));

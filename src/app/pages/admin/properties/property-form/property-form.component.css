@@ -1,3 +1,15 @@
 textarea {
     resize: none
 }
+
+form {
+    width: 75%;
+  }
+  
+  legend {
+    text-align: center;
+  }
+  
+  fieldset {
+    margin-top: 40px;
+  }

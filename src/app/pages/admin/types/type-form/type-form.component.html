@@ -1,24 +1,29 @@
-<form class="needs-validation" (ngSubmit)="onSubmit(typeFrm)" #typeFrm="ngForm">
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Type code</label>
-      <i class="required-sign" *ngIf="!type.code">*</i>
-      <input type="text" class="form-control" [(ngModel)]="type.code" name="code" id="validationCustom01" placeholder="Type code"
-        required>
-      <div class="invalid-feedback">
-        Code is required 
+<fieldset>
+  <legend>Tyoe form</legend>
+  <div class="d-flex align-items-center justify-content-center">
+    <form class="needs-validation" (ngSubmit)="onSubmit(typeFrm)" #typeFrm="ngForm">
+      <div class="form-row">
+        <div class="col-md-6 mb-4">
+          <label for="validationCustom01">Type code</label>
+          <i class="required-sign" *ngIf="!type.code">*</i>
+          <input type="text" class="form-control" [(ngModel)]="type.code" name="code" id="validationCustom01"
+            placeholder="Type code" required>
+          <div class="invalid-feedback">
+            Code is required
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <label for="validationCustom02">Type label</label>
+          <i class="required-sign" *ngIf="!type.label">*</i>
+          <input type="text" class="form-control" [(ngModel)]="type.label" name="label" id="validationCustom02"
+            placeholder="Type label" required>
+          <div class="invalid-feedback">
+            Label is required
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Type label</label>
-      <i class="required-sign" *ngIf="!type.label">*</i>
-      <input type="text" class="form-control" [(ngModel)]="type.label" name="label"  id="validationCustom02" placeholder="Type label"
-        required>
-      <div class="invalid-feedback">
-        Label is required 
-      </div>
-    </div>
+      <button type="submit" [disabled]="typeFrm.invalid" class="btn btn-outline-success">Save</button>
+      <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/types">Cancel</button>
+    </form>
   </div>
-  <button type="submit" [disabled]="typeFrm.invalid" class="btn btn-outline-success">Save</button>
-  <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/types">Cancel</button>
-</form>
+</fieldset>
