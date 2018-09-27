@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   budget: string;
   searchDto: PropertySearchDto;
   allProperties: Property[];
+  newDevelopments: Property[];
   allLocations: Location[];
 
   page = 0;
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.loadSubareas();
     this.loadMainProperties();
     this.loadMainLocations();
+    this.loadMainDevelopments();
   }
 
   loadTypes() {
@@ -108,6 +110,15 @@ export class HomeComponent implements OnInit {
     this.entityService.setPath("locations/main");
     this.entityService.getAll().subscribe((resp: any) => {
       this.allLocations = resp;
+    }, error => {
+      this.toastr.error(JSON.stringify(error));
+    })
+  }
+
+  loadMainDevelopments() {
+    this.entityService.setPath("properties/developments/main");
+    this.entityService.getAll().subscribe((resp: any) => {
+      this.newDevelopments = resp;
     }, error => {
       this.toastr.error(JSON.stringify(error));
     })

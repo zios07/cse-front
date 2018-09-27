@@ -69,7 +69,6 @@ export class PropertyFormComponent implements OnInit {
 
   uploadPhotos(event) {
     let photos = event.files;
-    console.log(event.files);
     if(photos && photos.length > 0 ) {
       let fd = new FormData();
       fd.append("uuid", localStorage.getItem("uuid"));

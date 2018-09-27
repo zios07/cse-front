@@ -81,7 +81,7 @@
 </div>
 <!-- Go to one of four selected locations. Possibility to choose from backend the four selected locations-->
 <div class="home-body-container">
-  
+
   <div class="all-locations  home-body-card">
     <!--click and go to All locations page-->
     <a routerLink="locations/all">
@@ -89,10 +89,16 @@
     </a>
     <div *ngIf="allLocations?.length != 0;else no_available_locations">
       <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let location of allLocations">
-        <img *ngIf="location.gallery.images[0]" src="data:image/jpeg;base64,{{location.gallery.images[0].content}}" alt="location image" class="card-img-top">
-        <img *ngIf="!location.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="location image" class="card-img-top">
+        <a [routerLink]="['properties', location.id]">
+          <img *ngIf="location.gallery.images[0]" src="data:image/jpeg;base64,{{location.gallery.images[0].content}}"
+            alt="location image" class="card-img-top">
+          <img *ngIf="!location.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="location image"
+            class="card-img-top">
+        </a>
         <div class="card-body">
-          <h5 class="card-title">{{location.name}}</h5>
+          <a [routerLink]="['properties', location.id]">
+            <h5 class="card-title">{{location.name}}</h5>
+          </a>
         </div>
       </div>
     </div>
@@ -110,10 +116,16 @@
     </a>
     <div *ngIf="allProperties?.length != 0;else no_available_properties">
       <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let property of allProperties">
-        <img *ngIf="property.gallery.images[0]" src="data:image/jpeg;base64,{{property.gallery.images[0].content}}" alt="Property image" class="card-img-top">
-        <img *ngIf="!property.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="Property image" class="card-img-top">
+        <a [routerLink]="['properties', property.id]">
+          <img *ngIf="property.gallery.images[0]" src="data:image/jpeg;base64,{{property.gallery.images[0].content}}"
+            alt="Property image" class="card-img-top">
+          <img *ngIf="!property.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="Property image"
+            class="card-img-top">
+        </a>
         <div class="card-body">
-          <h5 class="card-title">{{property.title}}</h5>
+          <a [routerLink]="['properties', property.id]">
+            <h5 class="card-title">{{property.title}}</h5>
+          </a>
           <p class="card-text">{{property.description}}</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -122,7 +134,7 @@
           <li class="list-group-item">${{property.price}}</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Details</a>
+          <a [routerLink]="['properties', property.id]" class="card-link">Details</a>
           <a href="#" class="card-link">Similar properties</a>
         </div>
       </div>
@@ -134,51 +146,39 @@
   </div>
 
   <div class="new-developments  home-body-card">
-    <!--click and go to New developments page-->
-    <a routerLink="developments/new">
-      <h3 class="home-card-title">New developments</h3>
+    <!--click and go to All developments page-->
+    <a routerLink="developments/all">
+      <h3 class="home-card-title text-center">New Developments</h3>
     </a>
-    <div class="row">
-      <!-- click and go to detail of this new development property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-            <div class="row">
-              <p class="card-text left">Villa in Mijas costa</p>
-              <p class="card-text right">1.100.000 euros</p>
-            </div>
-          </div>
+    <div *ngIf="newDevelopments?.length != 0;else no_available_developments">
+      <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let development of newDevelopments">
+        <a [routerLink]="['developments', development.id]">
+          <img *ngIf="development.gallery.images[0]" src="data:image/jpeg;base64,{{development.gallery.images[0].content}}"
+            alt="development image" class="card-img-top">
+          <img *ngIf="!development.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="development image"
+            class="card-img-top">
+        </a>
+        <div class="card-body">
+          <a [routerLink]="['developments', development.id]">
+            <h5 class="card-title">{{development.title}}</h5>
+          </a>
+          <p class="card-text">{{development.description}}</p>
         </div>
-      </div>
-      <!-- click and go to detail of this new development property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
-        </div>
-      </div>
-      <!-- click and go to detail of this new development  property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
-        </div>
-      </div>
-      <!-- click and go to detail of this new development property -->
-      <div class="col-md-3 col-sm-6 ">
-        <div class="card">
-          <div class="card-block">
-            <img class="card-img-top" src="../../../assets/imgs/frontline_beach.PNG" alt="" class="img-fluid">
-
-          </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Bedrooms: </b>{{development.nbBedrooms}}</li>
+          <li class="list-group-item"><b>Bathrooms: </b>{{development.nbBathrooms}}</li>
+          <li class="list-group-item">${{development.price}}</li>
+        </ul>
+        <div class="card-body">
+          <a [routerLink]="['developments', development.id]" class="card-link">Details</a>
+          <a href="#" class="card-link">Similar developments</a>
         </div>
       </div>
     </div>
+    <ng-template #no_available_developments>
+      There is no available developments.
+    </ng-template>
+
   </div>
 
   <div class="selection-properties  home-body-card">

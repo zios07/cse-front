@@ -90,10 +90,21 @@
     </div>
     <div class="form-row">
 
-      <div class="form-group">
+      <div class="col-md-4 mb-3">
         <label>Photos</label>
         <p-fileUpload name="photos[]" accept="image/*" mode="advanced" multiple="multiple" customUpload="false"
           (uploadHandler)="uploadPhotos($event)"></p-fileUpload>
+      </div>
+      <div class="col-md-5 mb-5">
+        <label for="">Display To Home page</label>
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="property.main" style="display: block">
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" [value]="true"> Yes
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" [value]="false"> No
+          </label>
+        </div>
       </div>
     </div>
     <button type="submit" [disabled]="propertyFrm.invalid" class="btn btn-outline-success">Save</button>
