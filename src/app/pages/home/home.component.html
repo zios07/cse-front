@@ -90,9 +90,9 @@
     <div *ngIf="allLocations?.length != 0;else no_available_locations">
       <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let location of allLocations">
         <a [routerLink]="['properties', location.id]">
-          <img *ngIf="location.gallery.images[0]" src="data:image/jpeg;base64,{{location.gallery.images[0].content}}"
+          <img *ngIf="location.gallery?.images[0]" src="data:image/jpeg;base64,{{location.gallery?.images[0].content}}"
             alt="location image" class="card-img-top">
-          <img *ngIf="!location.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="location image"
+          <img *ngIf="!location.gallery?.images[0]" src="../../../assets/img/image-not-found.jpg" alt="location image"
             class="card-img-top">
         </a>
         <div class="card-body">
@@ -117,9 +117,9 @@
     <div *ngIf="allProperties?.length != 0;else no_available_properties">
       <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let property of allProperties">
         <a [routerLink]="['properties', property.id]">
-          <img *ngIf="property.gallery.images[0]" src="data:image/jpeg;base64,{{property.gallery.images[0].content}}"
+          <img *ngIf="property.gallery?.images[0]" src="data:image/jpeg;base64,{{property.gallery?.images[0].content}}"
             alt="Property image" class="card-img-top">
-          <img *ngIf="!property.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="Property image"
+          <img *ngIf="!property.gallery?.images[0]" src="../../../assets/img/image-not-found.jpg" alt="Property image"
             class="card-img-top">
         </a>
         <div class="card-body">
@@ -153,9 +153,9 @@
     <div *ngIf="newDevelopments?.length != 0;else no_available_developments">
       <div class="card" style="width: 18rem;display: inline-block; margin: 10px" *ngFor="let development of newDevelopments">
         <a [routerLink]="['developments', development.id]">
-          <img *ngIf="development.gallery.images[0]" src="data:image/jpeg;base64,{{development.gallery.images[0].content}}"
+          <img *ngIf="development.gallery?.images[0]" src="data:image/jpeg;base64,{{development.gallery?.images[0].content}}"
             alt="development image" class="card-img-top">
-          <img *ngIf="!development.gallery.images[0]" src="../../../assets/img/image-not-found.jpg" alt="development image"
+          <img *ngIf="!development.gallery?.images[0]" src="../../../assets/img/image-not-found.jpg" alt="development image"
             class="card-img-top">
         </a>
         <div class="card-body">

@@ -36,6 +36,9 @@ import { TableModule } from 'primeng/table';
 
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/primeng';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -73,11 +76,14 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     FileUploadModule,
-    TableModule
+    TableModule,
+    ConfirmDialogModule,
+    DialogModule
   ],
   providers: [
     NgbCarouselConfig,
-    DatePipe
+    DatePipe,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

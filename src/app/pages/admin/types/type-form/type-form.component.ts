@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Type } from '../../../../domain/type';
 import { EntityService } from '../../../../services/entity.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'cse-type-form',
@@ -14,6 +15,7 @@ export class TypeFormComponent implements OnInit {
 
   constructor(private entityService: EntityService,
               private router: Router,
+              private toastr: ToastrService,
               private route: ActivatedRoute) {
       this.entityService.setPath("types");
   }
@@ -31,7 +33,7 @@ export class TypeFormComponent implements OnInit {
     this.entityService.create(this.type).subscribe(resp => {
       this.router.navigate(['/admin/types']);
     }, error => {
-      console.log(error);
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
@@ -40,9 +42,8 @@ export class TypeFormComponent implements OnInit {
     if (id) {
       this.entityService.getOne(id).subscribe((resp: any) => {
         this.type = resp;
-        console.log(resp);
       }, error => {
-        console.log(error);
+        this.toastr.error(JSON.stringify(error));
       })
     }
   }

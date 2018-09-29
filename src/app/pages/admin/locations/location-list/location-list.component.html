@@ -1,33 +1,72 @@
 <!-- <table class="table table-striped table-bordered table-sm row-border hover display" datatable [dtOptions]="dtOptions"
   [dtTrigger]="dtTrigger"> -->
-<a routerLink="new" class="add-link">
-  <i class="fa fa-plus"></i>
-  Add new location
-</a>
-<table class="table table-dark">
-  <thead>
+<div class="add-btn-container">
+  <a routerLink="new" class="add-link">
+    <button type="button" class="btn btn-info">
+      <i class="fa fa-plus"></i>
+      Add new Location
+    </button>
+  </a>
+</div>
+
+<p-table class="locations-table" [value]="locations" dataKey="id" [loading]="loading" [lazy]="true" (onLazyLoad)="loadLocationsLazily($event)"
+  [paginator]="true" [rows]="size" [totalRecords]="totalRecords">
+  <ng-template pTemplate="header">
     <tr>
+      <th></th>
       <th scope="col">Id</th>
       <th scope="col">Code</th>
       <th scope="col">Name</th>
-      <th scope="col" colspan="2">action</th>
+      <th scope="col">Action</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let location of locations">
+  </ng-template>
+  <ng-template pTemplate="body" let-location let-expanded="expanded">
+    <tr [pSelectableRow]="location">
+      <td>
+        <a [pRowToggler]="location">
+          <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+        </a>
+      </td>
       <td>{{location.id}}</td>
       <td>{{location.code}}</td>
       <td>{{location.name}}</td>
       <td>
-        <span class="link" routerLink="{{location.id}}">
-          <i class="fa fa-edit"></i>
-        </span>
-      </td>
-      <td>
-        <span class="link" (click)="delete(location.id)">
-          <i class="fa fa-close"></i>
-        </span>
+        <button pButton icon="fa fa-edit" [routerLink]="location.id"></button>
+        &nbsp;&nbsp;
+        <button type="button" (click)="showDialog()" pButton icon="pi pi-times"></button>
       </td>
     </tr>
-  </tbody>
-</table>
+    <p-dialog header="Delete location" [(visible)]="displayPopup" [modal]="true" [responsive]="true" [width]="350"
+      [minWidth]="200" [minY]="70" [maximizable]="true" [baseZIndex]="100">
+      <span>Are you sure that you want to delete this location ?</span>
+      <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="delete(location.id)" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="displayPopup=false" label="No" class="ui-button-secondary"></button>
+      </p-footer>
+    </p-dialog>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-location>
+    <tr>
+      <td colspan="5">
+        <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+          <div class="ui-g-12 ui-md-3" style="text-align:center;">
+            <img [attr.alt]="location.brand" style="max-width: 300px; max-height: 300px" src="data:image/png;base64,{{location.gallery?.images[0].content}}">
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <b>Code:</b> {{location.code}}
+              </div>
+              <div class="ui-g-12">
+                <b>Name:</b> {{location.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    There are {{locations?.length}} locations
+  </ng-template>
+</p-table>

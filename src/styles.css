@@ -1,6 +1,9 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~font-awesome/css/font-awesome.css';
 
+html, body {
+    height: 100%;
+}
 
 body {
     font-family: ubuntu, Verdana, Geneva, sans-serif;
@@ -46,3 +49,20 @@ td, th {
 .form-container {
     margin: 50px;
 }
+
+.main-container {
+    min-height: 100%;
+}
+
+.router-outlet-container {
+    overflow:auto;
+    padding-bottom:150px; 
+}
+
+.page-footer {
+    position: relative;
+    /* margin-top: -150px; negative value of footer height */
+    height: 150px;
+    clear:both;
+    padding-top:20px !important;
+  } 

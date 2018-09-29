@@ -4,7 +4,7 @@ import { EntityService } from '../../../../services/entity.service';
 import { Subject } from 'rxjs';
 import * as $ from 'jquery';
 import { ToastrService } from 'ngx-toastr';
-import { LazyLoadEvent } from 'primeng/primeng';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/primeng';
 
 @Component({
   selector: 'cse-property-list',
@@ -15,13 +15,13 @@ export class PropertyListComponent implements OnInit {
 
   properties: Property[] = [];
   page = 0;
-  size = 2;
+  size = 10;
   loading = false;
   totalRecords;
+  displayPopup: boolean = false;
 
   constructor(private entityService: EntityService,
-    private toastr: ToastrService) {
-  }
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loadProperties();
@@ -35,24 +35,36 @@ export class PropertyListComponent implements OnInit {
       this.totalRecords = resp.totalElements;
       this.loading = false;
     }, error => {
+      this.loading = false;
       this.toastr.error(JSON.stringify(error));
     })
   }
 
   delete(id) {
+    this.loading = true;
     this.entityService.setPath("properties");
     this.entityService.delete(id).subscribe(resp => {
+      this.displayPopup = false;
+      this.loading = false;
       this.toastr.info("Location deleted : " + id);
       this.loadProperties();
+    }, error => {
+      this.loading = false;
+      this.displayPopup = false;
+      this.toastr.error(JSON.stringify(error));
     })
   }
 
   loadPropertiesLazily(event: LazyLoadEvent) {
     this.loading = true;
     setTimeout(() => {
-      this.page =((event.first + event.rows) / this.size ) - 1;
+      this.page = ((event.first + event.rows) / this.size) - 1;
       this.ngOnInit();
     }, 1000);
   }
-
+  
+  showDialog() {
+      this.displayPopup = true;
+  }
+  
 }
