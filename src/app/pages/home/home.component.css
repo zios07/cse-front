@@ -6,7 +6,7 @@
 }
 
 .home-body-container {
-    margin: 50px 70px;
+    margin: 50px 20px;
 }
 
 .home-body-card {
@@ -44,5 +44,12 @@ a {
     list-style: none;
 }
 
+.carousel-control-next:hover {
+    cursor: pointer;
+}
 
-
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

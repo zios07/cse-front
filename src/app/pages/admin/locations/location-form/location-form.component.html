@@ -1,0 +1,46 @@
+<fieldset>
+  <legend>Location form</legend>
+  <div class="d-flex align-items-center justify-content-center">
+    <form class="needs-validation" (ngSubmit)="onSubmit(locationFrm)" #locationFrm="ngForm">
+      <div class="form-group">
+        <label for="validationCustom01">Location code</label>
+        <i class="required-sign" *ngIf="!location.code">*</i>
+        <input type="text" class="form-control" [(ngModel)]="location.code" name="code" id="validationCustom01"
+          placeholder="Location code" required>
+        <div class="invalid-feedback">
+          Code is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="validationCustom02">Location name</label>
+        <i class="required-sign" *ngIf="!location.name">*</i>
+        <input type="text" class="form-control" [(ngModel)]="location.name" name="name" id="validationCustom02"
+          placeholder="Location name" required>
+        <div class="invalid-feedback">
+          Name is required
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="validationCustomUsername">Preview picture</label>
+        <div>
+          <p-fileUpload name="photos[]" accept="image/*" mode="basic" customUpload="false" (onSelect)="uploadPhoto($event)"
+            showCancelButton="true"></p-fileUpload>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Display To Home page</label>
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="location.main" style="display: block">
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" [value]="true"> Yes
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" [value]="false"> No
+          </label>
+        </div>
+      </div>
+      <button type="submit" [disabled]="locationFrm.invalid" class="btn btn-outline-success">Save</button>
+      <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/locations">Cancel</button>
+    </form>
+  </div>
+</fieldset>

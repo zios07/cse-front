@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule, NgbCarouselModule, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbCarouselModule, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -8,10 +8,9 @@ import { HeaderComponent } from './pages/partials/header/header.component';
 import { FooterComponent } from './pages/partials/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { UsersComponent } from './pages/admin/users/users.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AllPropertiesComponent } from './pages/properties/all-properties/all-properties.component';
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
@@ -21,6 +20,29 @@ import { NewsComponent } from './pages/news/news.component';
 import { NewDevelopmentsComponent } from './pages/developments/new-developments/new-developments.component';
 import { SelectionPropertiesComponent } from './pages/properties/selection-properties/selection-properties.component';
 import { AllLocationsComponent } from './pages/locations/all-locations/all-locations.component';
+import { PropertyListComponent } from './pages/admin/properties/property-list/property-list.component';
+import { PropertyFormComponent } from './pages/admin/properties/property-form/property-form.component';
+import { LocationFormComponent } from './pages/admin/locations/location-form/location-form.component';
+import { LocationListComponent } from './pages/admin/locations/location-list/location-list.component';
+import { TypeFormComponent } from './pages/admin/types/type-form/type-form.component';
+import { TypeListComponent } from './pages/admin/types/type-list/type-list.component';
+import { UserListComponent } from './pages/admin/users/user-list/user-list.component';
+import { UserFormComponent } from './pages/admin/users/user-form/user-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
+
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/primeng';
+import { DialogModule } from 'primeng/dialog';
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { RequestOptions, Http } from '@angular/http';
+import { RequestInterceptor } from './services/request-interceptor.service';
+import { SubareaFormComponent } from './pages/admin/subareas/subarea-form/subarea-form.component';
+import { SubareaListComponent } from './pages/admin/subareas/subarea-list/subarea-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +52,6 @@ import { AllLocationsComponent } from './pages/locations/all-locations/all-locat
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    UsersComponent,
     AllPropertiesComponent,
     PropertyDetailsComponent,
     AllDevelopmentsComponent,
@@ -38,19 +59,43 @@ import { AllLocationsComponent } from './pages/locations/all-locations/all-locat
     NewsComponent,
     NewDevelopmentsComponent,
     SelectionPropertiesComponent,
-    AllLocationsComponent
+    AllLocationsComponent,
+    PropertyListComponent,
+    PropertyFormComponent,
+    LocationFormComponent,
+    LocationListComponent,
+    TypeFormComponent,
+    TypeListComponent,
+    UserListComponent,
+    UserFormComponent,
+    SubareaFormComponent,
+    SubareaListComponent
   ],
-  imports: [  
+  imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    HttpClientModule,
     FormsModule,
     NgbModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    FileUploadModule,
+    TableModule,
+    ConfirmDialogModule,
+    DialogModule
   ],
   providers: [
-    NgbCarouselConfig
+    NgbCarouselConfig,
+    DatePipe,
+    ConfirmationService,
+    AuthGuard,
+    AdminGuard,
+		{ 
+			provide	: HTTP_INTERCEPTORS, 
+			useClass: RequestInterceptor,
+			multi: true 
+		}
   ],
   bootstrap: [AppComponent]
 })

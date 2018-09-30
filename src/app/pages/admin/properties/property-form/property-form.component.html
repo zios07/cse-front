@@ -1,0 +1,116 @@
+<fieldset>
+  <legend>Property form</legend>
+  <div class="d-flex align-items-center justify-content-center">
+    <form class="needs-validation" (ngSubmit)="onSubmit(propertyFrm)" #propertyFrm="ngForm">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom01">Property ref</label>
+          <i class="required-sign" *ngIf="!property.ref">*</i>
+          <input type="text" class="form-control" [(ngModel)]="property.ref" name="ref" id="validationCustom01"
+            placeholder="Property ref" required>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Property title</label>
+          <i class="required-sign" *ngIf="!property.title">*</i>
+          <input type="text" class="form-control" [(ngModel)]="property.title" name="title" id="validationCustom02"
+            placeholder="Property title" required>
+          <div class="invalid-feedback">
+            Title is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Property description</label>
+          <i class="required-sign" *ngIf="!property.description">*</i>
+          <textarea rows="1" type="text" class="form-control" [(ngModel)]="property.description" name="description" id="validationCustom02"
+            placeholder="Property description" required></textarea>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Property type</label>
+          <i class="required-sign" *ngIf="!property.type">*</i>
+          <select name="type" class="form-control" [(ngModel)]="property.type">
+            <option *ngFor="let type of types" [ngValue]="type">
+              {{ type.label }}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Number of bathrooms</label>
+          <i class="required-sign" *ngIf="!property.nbBathrooms">*</i>
+          <input type="number" class="form-control" [(ngModel)]="property.nbBathrooms" name="nbBathrooms" id="validationCustom03"
+            placeholder="Number of bathrooms" required>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Number of bedrooms</label>
+          <i class="required-sign" *ngIf="!property.nbBedrooms">*</i>
+          <input type="number" class="form-control" [(ngModel)]="property.nbBedrooms" name="nbBedrooms" id="validationCustom04"
+            placeholder="Number of bedrooms" required>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Subarea</label>
+          <i class="required-sign" *ngIf="!property.subarea">*</i>
+          <select name="subarea" class="form-control" [(ngModel)]="property.subarea">
+            <option *ngFor="let subarea of subareas" [ngValue]="subarea">
+              {{ subarea.label }}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationCustom02">Price</label>
+          <i class="required-sign" *ngIf="!property.price">*</i>
+          <input type="number" class="form-control" [(ngModel)]="property.price" name="price" id="validationCustom03"
+            placeholder="Price" required>
+          <div class="invalid-feedback">
+            This field is required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="active-date-input">Active Date</label>
+          <input class="form-control" type="date" [(ngModel)]="property.activeDate" name="activeDate" id="active-date-input">
+        </div>
+      </div>
+      <div class="form-row">
+
+        <div class="col-md-4 mb-3">
+          <label>Photos</label>
+          <p-fileUpload name="photos[]" accept="image/*" mode="advanced" multiple="multiple" customUpload="false"
+            (uploadHandler)="uploadPhotos($event)"></p-fileUpload>
+        </div>
+        <div class="col-md-5 mb-5">
+          <label for="">Display To Home page</label>
+          <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="property.main" style="display: block">
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="radio" [value]="true"> Yes
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="radio" [value]="false"> No
+            </label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" [disabled]="propertyFrm.invalid" class="btn btn-outline-success">Save</button>
+      <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/properties">Cancel</button>
+    </form>
+  </div>
+</fieldset>

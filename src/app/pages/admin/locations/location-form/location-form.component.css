@@ -1,0 +1,11 @@
+form {
+  width: 25%;
+}
+
+legend {
+  text-align: center;
+}
+
+fieldset {
+  margin-top: 40px;
+}
