@@ -43,6 +43,7 @@ export class TypeListComponent implements OnInit {
       this.loading = false;
       this.toastr.info("Type deleted : " + id);
       this.loadTypes();
+      this.displayPopup = false;
     }, error => {
       this.displayPopup = false;
       this.loading = false;

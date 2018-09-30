@@ -45,6 +45,7 @@ export class LocationListComponent implements OnInit {
       this.loading = false;
       this.toastr.info("Location deleted : " + id);
       this.loadLocations();
+      this.displayPopup = false;
     }, error => {
       this.displayPopup = false;
       this.loading = false;

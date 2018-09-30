@@ -45,6 +45,7 @@ export class SubareaListComponent implements OnInit {
       this.loading = false;
       this.toastr.info("Subarea deleted : " + id);
       this.loadSubareas();
+      this.displayPopup = false;
     }, error => {
       this.displayPopup = false;
       this.loading = false;
