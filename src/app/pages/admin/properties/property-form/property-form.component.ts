@@ -99,12 +99,12 @@ export class PropertyFormComponent implements OnInit {
   }
 
   loadTypes() {
-    this.entityService.setPath("types");
+    this.entityService.setPath("types/all");
     return this.entityService.getAll();
   }
 
   loadSubareas() {
-    this.entityService.setPath("subareas");
+    this.entityService.setPath("subareas/all");
     return this.entityService.getAll();
   }
 

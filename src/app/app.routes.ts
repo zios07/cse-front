@@ -18,6 +18,10 @@ import { TypeListComponent } from "./pages/admin/types/type-list/type-list.compo
 import { TypeFormComponent } from "./pages/admin/types/type-form/type-form.component";
 import { UserListComponent } from "./pages/admin/users/user-list/user-list.component";
 import { UserFormComponent } from "./pages/admin/users/user-form/user-form.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { AdminGuard } from "./guards/admin.guard";
+import { SubareaListComponent } from "./pages/admin/subareas/subarea-list/subarea-list.component";
+import { SubareaFormComponent } from "./pages/admin/subareas/subarea-form/subarea-form.component";
 
 export const routes: Routes = [
     { path: "", component: HomeComponent},
@@ -31,17 +35,20 @@ export const routes: Routes = [
     { path: "developments/:id", component: DevelopmentDetailsComponent},
     { path: "locations/all", component: AllLocationsComponent},
     { path: "properties/location/:id", component: AllPropertiesComponent},
-    { path: "admin/properties", component: PropertyListComponent},
-    { path: "admin/properties/new", component: PropertyFormComponent},
-    { path: "admin/properties/:id", component: PropertyFormComponent},
-    { path: "admin/locations", component: LocationListComponent},
-    { path: "admin/locations/new", component: LocationFormComponent},
-    { path: "admin/locations/:id", component: LocationFormComponent},
-    { path: "admin/types", component: TypeListComponent},
-    { path: "admin/types/new", component: TypeFormComponent},
-    { path: "admin/types/:id", component: TypeFormComponent},
-    { path: "admin/users/new", component: UserFormComponent},
-    { path: "admin/users", component: UserListComponent},
-    { path: "admin/users/:id", component: UserFormComponent},
+    { path: "admin/properties", component: PropertyListComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/properties/new", component: PropertyFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/properties/:id", component: PropertyFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/locations", component: LocationListComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/locations/new", component: LocationFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/locations/:id", component: LocationFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/subareas", component: SubareaListComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/subareas/new", component: SubareaFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/subareas/:id", component: SubareaFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/types", component: TypeListComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/types/new", component: TypeFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/types/:id", component: TypeFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/users/new", component: UserFormComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/users", component: UserListComponent, canActivate: [AuthGuard, AdminGuard]},
+    { path: "admin/users/:id", component: UserFormComponent, canActivate: [AuthGuard, AdminGuard]},
     { path: "**", component: HomeComponent}
 ]

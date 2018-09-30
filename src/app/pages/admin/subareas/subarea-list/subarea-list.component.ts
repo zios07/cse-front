@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Type } from '../../../../domain/type';
+import { Subarea } from '../../../../domain/subarea';
 import { EntityService } from '../../../../services/entity.service';
 import { ToastrService } from 'ngx-toastr';
 import { LazyLoadEvent } from 'primeng/primeng';
 
 @Component({
-  selector: 'cse-type-list',
-  templateUrl: './type-list.component.html',
-  styleUrls: ['./type-list.component.css']
+  selector: 'cse-subarea-list',
+  templateUrl: './subarea-list.component.html',
+  styleUrls: ['./subarea-list.component.css']
 })
-export class TypeListComponent implements OnInit {
+export class SubareaListComponent implements OnInit {
 
-  types: Type[] = [];
+  subareas: Subarea[] = [];
   page = 0;
   size = 10;
   loading = false;
@@ -19,18 +19,18 @@ export class TypeListComponent implements OnInit {
   displayPopup: boolean = false;
 
   constructor(private entityService: EntityService,
-            private toastr: ToastrService) {
-    this.entityService.setPath("types");
+    private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.loadTypes();
+    this.loadSubareas();
   }
 
-  loadTypes() {
+  loadSubareas() {
     this.loading = true;
+    this.entityService.setPath("subareas");
     this.entityService.getAll(this.page, this.size).subscribe((resp: any) => {
-      this.types = resp.content;
+      this.subareas = resp.content;
       this.totalRecords = resp.totalElements;
       this.loading = false;
     }, error => {
@@ -39,18 +39,21 @@ export class TypeListComponent implements OnInit {
   }
 
   delete(id) {
+    this.loading = true;
+    this.entityService.setPath("subareas");
     this.entityService.delete(id).subscribe(resp => {
       this.loading = false;
-      this.toastr.info("Type deleted : " + id);
-      this.loadTypes();
+      this.toastr.info("Subarea deleted : " + id);
+      this.loadSubareas();
     }, error => {
       this.displayPopup = false;
       this.loading = false;
       this.toastr.error(JSON.stringify(error));
     })
-  }  
+  }
 
-  loadTypesLazily(event: LazyLoadEvent) {
+  
+  loadSubareasLazily(event: LazyLoadEvent) {
     this.loading = true;
     setTimeout(() => {
       this.page = ((event.first + event.rows) / this.size) - 1;
@@ -61,5 +64,6 @@ export class TypeListComponent implements OnInit {
   showDialog() {
       this.displayPopup = true;
   }
+
 
 }

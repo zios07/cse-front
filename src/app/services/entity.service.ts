@@ -20,8 +20,8 @@ export class EntityService {
     return this.http.get(this.apiUrl + this.path + "?page=" + page + "&size=" + size);
   }
 
-  create(entity) {
-    return this.http.post(this.apiUrl + this.path, entity);
+  create(entity, params?) {
+    return this.http.post(this.apiUrl + this.path, entity, params);
   }
 
   update(entity) {

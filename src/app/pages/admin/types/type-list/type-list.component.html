@@ -40,6 +40,7 @@
         </p-dialog>
       </ng-template>
       <ng-template pTemplate="summary">
-        There are {{types?.length}} types
+        <span *ngIf="types?.length > 0">There are {{types?.length}} types</span>
+        <span *ngIf="types?.length == 0">There are no types</span>  
       </ng-template>
     </p-table>

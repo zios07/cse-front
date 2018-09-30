@@ -1,0 +1,49 @@
+<fieldset>
+  <legend>Subarea form</legend>
+  <div class="d-flex align-items-center justify-content-center">
+    <form class="needs-validation" (ngSubmit)="onSubmit(subareaFrm)" #subareaFrm="ngForm">
+      <div class="form-group">
+        <label for="validationCustom01">Subarea Label</label>
+        <i class="required-sign" *ngIf="!subarea.label">*</i>
+        <input type="text" class="form-control" [(ngModel)]="subarea.label" name="label" id="validationCustom01"
+          placeholder="Subarea label" required>
+        <div class="invalid-feedback">
+          Label is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="validationCustom02">Subarea location</label>
+        <i class="required-sign" *ngIf="!subarea.location">*</i>
+        <select name="location" class="form-control" [(ngModel)]="subarea.location">
+          <option *ngFor="let location of locations" [ngValue]="location">
+            {{ location.name }}
+          </option>
+        </select>
+        <div class="invalid-feedback">
+          Location is required
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="validationCustom01">Subarea Longitude</label>
+        <i class="required-sign" *ngIf="!subarea.longitude">*</i>
+        <input type="number" class="form-control" [(ngModel)]="subarea.longitude" name="longitude" id="validationCustom01"
+          placeholder="Subarea longitude" required>
+        <div class="invalid-feedback">
+          Longitude is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="validationCustom01">Subarea Latitude</label>
+        <i class="required-sign" *ngIf="!subarea.latitude">*</i>
+        <input type="number" class="form-control" [(ngModel)]="subarea.latitude" name="latitude" id="validationCustom01"
+          placeholder="Subarea latitude" required>
+        <div class="invalid-feedback">
+          Latitude is required
+        </div>
+      </div>
+      <button type="submit" [disabled]="subareaFrm.invalid" class="btn btn-outline-success">Save</button>
+      <button type="button" class="btn btn-outline-secondary btn-cancel" routerLink="/admin/subareas">Cancel</button>
+    </form>
+  </div>
+</fieldset>

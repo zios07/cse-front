@@ -81,6 +81,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="summary">
-    There are {{properties?.length}} properties
+    <span *ngIf="properties?.length > 0">There are {{properties?.length}} properties</span>
+    <span *ngIf="properties?.length == 0">There are no properties</span> 
   </ng-template>
 </p-table>

@@ -55,7 +55,6 @@ td, th {
 }
 
 .router-outlet-container {
-    overflow:auto;
     padding-bottom:150px; 
 }
 

@@ -7,5 +7,6 @@ export class Location {
     name: string;
     gallery: Gallery;
     uuid: String;
-
+    main: boolean;
+    
 }

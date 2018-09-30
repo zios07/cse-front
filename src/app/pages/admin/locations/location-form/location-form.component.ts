@@ -4,7 +4,6 @@ import { EntityService } from '../../../../services/entity.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UUID } from 'angular2-uuid';
-import { FileUpload } from 'primeng/primeng';
 
 @Component({
   selector: 'cse-location-form',

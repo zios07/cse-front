@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AllPropertiesComponent } from './pages/properties/all-properties/all-properties.component';
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
@@ -28,17 +28,21 @@ import { TypeFormComponent } from './pages/admin/types/type-form/type-form.compo
 import { TypeListComponent } from './pages/admin/types/type-list/type-list.component';
 import { UserListComponent } from './pages/admin/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/admin/users/user-form/user-form.component';
-import { HttpModule } from '@angular/http';
-import { DataTablesModule } from 'angular-datatables';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/primeng';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { RequestOptions, Http } from '@angular/http';
+import { RequestInterceptor } from './services/request-interceptor.service';
+import { SubareaFormComponent } from './pages/admin/subareas/subarea-form/subarea-form.component';
+import { SubareaListComponent } from './pages/admin/subareas/subarea-list/subarea-list.component';
 
 @NgModule({
   declarations: [
@@ -63,13 +67,14 @@ import {DialogModule} from 'primeng/dialog';
     TypeFormComponent,
     TypeListComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    SubareaFormComponent,
+    SubareaListComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    HttpModule,
     FormsModule,
     NgbModule,
     NgbCarouselModule,
@@ -83,7 +88,14 @@ import {DialogModule} from 'primeng/dialog';
   providers: [
     NgbCarouselConfig,
     DatePipe,
-    ConfirmationService
+    ConfirmationService,
+    AuthGuard,
+    AdminGuard,
+		{ 
+			provide	: HTTP_INTERCEPTORS, 
+			useClass: RequestInterceptor,
+			multi: true 
+		}
   ],
   bootstrap: [AppComponent]
 })

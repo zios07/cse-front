@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '../../../../domain/location';
 import { EntityService } from '../../../../services/entity.service';
 import { ToastrService } from 'ngx-toastr';
-import { ConfirmationService, LazyLoadEvent } from 'primeng/primeng';
+import { LazyLoadEvent } from 'primeng/primeng';
 
 @Component({
   selector: 'cse-location-list',

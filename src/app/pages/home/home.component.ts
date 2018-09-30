@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadTypes() {
-    this.entityService.setPath("types");
+    this.entityService.setPath("types/all");
     this.entityService.getAll(this.page, this.size).subscribe((resp: Type[]) => {
       this.types = resp;
     }, error => {
@@ -58,8 +58,8 @@ export class HomeComponent implements OnInit {
   }
 
   loadLocations() {
-    this.entityService.setPath("locations");
-    this.entityService.getAll(this.page, this.size).subscribe((resp: any) => {
+    this.entityService.setPath("locations/all");
+    this.entityService.getAll().subscribe((resp: any) => {
       this.locations = resp.content;
     }, error => {
       this.toastr.error(JSON.stringify(error));
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadSubareas() {
-    this.entityService.setPath("subareas");
+    this.entityService.setPath("subareas/all");
     this.entityService.getAll(this.page, this.size).subscribe((resp: Subarea[]) => {
       this.subareas = resp;
     }, error => {

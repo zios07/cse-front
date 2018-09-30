@@ -16,5 +16,6 @@ export class Property {
     price: number;
     gallery: Gallery;
     activeDate: string;
+    main: boolean;
 
 }
